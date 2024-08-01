@@ -55,7 +55,7 @@ runs:
         ACTION_PATH: ${{ github.action_path }}
       shell: bash
     - name: Download Artifacts
-      run: python3 ${ACTION_PATH}/parse_for_artifacts.py -a "${{ inputs.run-id }}" -c "${{ inputs.test-conda-packed-name }}"
+      run: python3 ${ACTION_PATH}/parse_for_artifacts.py -a "${{ inputs.run-id }}" -c "${{ inputs.test-conda-packed-name }}" -o "${{ inputs.org }}" -r "${{ inputs.repo }}"
       env:
         GHA_TOKEN: ${{ github.token }}
         GH_TOKEN: ${{ github.token }}
