@@ -1,5 +1,5 @@
 name: 'testing-conda-environment'
-description: "Test a conda environment of a specific python version against all beamlines"
+description: "Test a conda environment located as a GitHub artifact of a specific python version against all beamlines"
 inputs:
   run-id:
     required: true
@@ -55,7 +55,7 @@ runs:
         ACTION_PATH: ${{ github.action_path }}
       shell: bash
     - name: Download Artifacts
-      run: python3 ${ACTION_PATH}/parse_for_artifacts.py -a "${{ inputs.run-id }}" -c "${{ inputs.test-conda-packed-name }}" -o "${{ inputs.org }}" -r "${{ inputs.repo }}"
+      run: python3 ${ACTION_PATH}/parse_for_artifacts.py -a "${{ inputs.run-id }}" -c "${{ inputs.test-conda-packed-name }}" -n "${{ github.repository }}"
       env:
         GHA_TOKEN: ${{ github.token }}
         GH_TOKEN: ${{ github.token }}
